@@ -1,0 +1,10 @@
+#Imagem do banco de dados
+FROM postgres:latest
+#Variáveis de ambiente **DEPENDE MUITO DO BANCO DE DADOS**
+ENV POSTGRES_USER admin
+ENV POSTGRES_PASSWORD 12345
+ENV POSTGRES_DB rede_social
+#Copia o arquivo SQL para o container e chama o comando para executar o script
+COPY redeSocial.sql /docker-entrypoint-initdb.d/
+#Porta em que o banco de dados estará rodando
+EXPOSE 5432
